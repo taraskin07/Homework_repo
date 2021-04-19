@@ -91,20 +91,13 @@ def get_most_common_non_ascii_char(file_path: str) -> str:
 
 #
 #
-with codecs.open(
-        "data.txt", 'r', encoding="utf-8"
-) as fi:
+with codecs.open("data.txt", "r", encoding="utf-8") as fi:
     print(get_longest_diverse_words(fi))
-with codecs.open(
-        "data.txt", 'r', encoding="utf-8"
-) as fi:
+with codecs.open("data.txt", "r", encoding="utf-8") as fi:
     print(get_rarest_char(fi))
-with codecs.open(
-        "data.txt", 'r', encoding="utf-8"
-) as fi:
+with codecs.open("data.txt", "r", encoding="utf-8") as fi:
     print(count_punctuation_chars(fi))
-with codecs.open(
-        "data.txt", 'r', encoding="utf-8"
-) as fi:
+with codecs.open("data.txt", "r", encoding="utf-8") as fi:
     print(get_most_common_non_ascii_char(fi))
 
+fi.close()
