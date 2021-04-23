@@ -11,9 +11,6 @@ Examples:
 """
 from typing import List
 
-nums = [1, 3, -1, -3, 5, 3, 6, 7]
-k = 3
-
 
 def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
     start = 0
@@ -37,4 +34,7 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
     return maximum_sum
 
 
-print(find_maximal_subarray_sum(nums, k))
+if __name__ == "__main__":
+    nums = [1, 3, -1, -3, 5, 3, 6, 7]
+    k = 3
+    print(find_maximal_subarray_sum(nums, k))

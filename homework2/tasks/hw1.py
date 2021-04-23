@@ -50,7 +50,6 @@ def get_rarest_char(file_path: str) -> str:
     return (min, rare, another_rare)
 
 
-#
 def count_punctuation_chars(file_path: str) -> int:
     words_as_they_are = file_path.read().split()
     letters = "".join(sorted(words_as_they_are))
@@ -89,15 +88,12 @@ def get_most_common_non_ascii_char(file_path: str) -> str:
     return max, frequent
 
 
-#
-#
-with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
-    print(get_longest_diverse_words(fi))
-with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
-    print(get_rarest_char(fi))
-with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
-    print(count_punctuation_chars(fi))
-with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
-    print(get_most_common_non_ascii_char(fi))
-
-fi.close()
+if __name__ == "__main__":
+    with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
+        print(get_longest_diverse_words(fi))
+    with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
+        print(get_rarest_char(fi))
+    with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
+        print(count_punctuation_chars(fi))
+    with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
+        print(get_most_common_non_ascii_char(fi))
