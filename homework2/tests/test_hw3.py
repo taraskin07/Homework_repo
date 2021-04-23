@@ -1,10 +1,10 @@
-from tasks.hw3 import combinations
+from homework2.tasks.hw3 import combinations
 
 print(combinations([1, 2], [3, 4]))
 print(combinations([1], [3, 4, 5]))
 
 
-def assert_combinations():
+def test_assert_combinations():
     assert combinations([1, 2], [3, 4]) == [
         [1, 3],
         [1, 4],
