@@ -7,6 +7,7 @@ Given a file containing text. Complete using only default collections:
     5) Find most common non ascii char for document
 """
 import codecs
+import os
 from typing import List
 
 
@@ -89,11 +90,12 @@ def get_most_common_non_ascii_char(file_path: str) -> str:
 
 
 if __name__ == "__main__":
-    with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
+    abs_path = os.getcwd() + "\\data.txt"
+    with codecs.open(abs_path, "r", encoding="unicode-escape") as fi:
         print(get_longest_diverse_words(fi))
-    with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
+    with codecs.open(abs_path, "r", encoding="unicode-escape") as fi:
         print(get_rarest_char(fi))
-    with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
+    with codecs.open(abs_path, "r", encoding="unicode-escape") as fi:
         print(count_punctuation_chars(fi))
-    with codecs.open("data.txt", "r", encoding="unicode-escape") as fi:
+    with codecs.open(abs_path, "r", encoding="unicode-escape") as fi:
         print(get_most_common_non_ascii_char(fi))
