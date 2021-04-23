@@ -36,8 +36,9 @@ def major_and_minor_elem(inp: List) -> Tuple[int, int]:
     return max_element, min_element
 
 
-ex1 = [3, 2, 3]
-print(major_and_minor_elem(ex1))
+if __name__ == "__main__":
+    ex1 = [3, 2, 3]
+    print(major_and_minor_elem(ex1))
 
-ex2 = [2, 2, 1, 1, 1, 2, 2]
-print(major_and_minor_elem(ex2))
+    ex2 = [2, 2, 1, 1, 1, 2, 2]
+    print(major_and_minor_elem(ex2))

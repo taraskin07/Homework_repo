@@ -1,9 +1,6 @@
-from homework2.tasks.hw5 import custom_range
 import string
 
-print(custom_range(string.ascii_lowercase, "g"))
-print(custom_range(string.ascii_lowercase, "g", "p"))
-print(custom_range(string.ascii_lowercase, "p", "g", -2))
+from homework2.tasks.hw5 import custom_range
 
 
 def test_conditions_and_examples():

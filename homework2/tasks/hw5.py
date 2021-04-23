@@ -40,20 +40,7 @@ def custom_range(string, *args):
     return new_list
 
 
-print(custom_range(string.ascii_lowercase, "g"))
-print(custom_range(string.ascii_lowercase, "g", "p"))
-print(custom_range(string.ascii_lowercase, "p", "g", -2))
-
-assert custom_range(string.ascii_lowercase, "g") == ["a", "b", "c", "d", "e", "f"]
-assert custom_range(string.ascii_lowercase, "g", "p") == [
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-]
-assert custom_range(string.ascii_lowercase, "p", "g", -2) == ["p", "n", "l", "j", "h"]
+if __name__ == "__main__":
+    print(custom_range(string.ascii_lowercase, "g"))
+    print(custom_range(string.ascii_lowercase, "g", "p"))
+    print(custom_range(string.ascii_lowercase, "p", "g", -2))
