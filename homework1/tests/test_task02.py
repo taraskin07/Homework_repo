@@ -1,4 +1,4 @@
-from tasks.task02 import check_fibonacci
+from homework1.tasks.task02 import check_fibonacci
 
 data_to_process_pos = [
     0,
@@ -35,13 +35,13 @@ data_to_process_neg = [
 ]
 
 
-def check_that_fibonacci_sequence_is_fibonacci():
+def test_that_fibonacci_sequence_is_fibonacci():
     """Testing that fibonacci sequence give True"""
 
     assert check_fibonacci(data_to_process_pos)
 
 
-def check_that_random_sequence_is_not_fibonacci():
+def test_that_random_sequence_is_not_fibonacci():
     """Testing that random sequence give False"""
 
     assert not check_fibonacci(data_to_process_neg)

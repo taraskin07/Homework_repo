@@ -1,11 +1,12 @@
-from tests.hw5 import custom_range
+from homework2.tasks.hw5 import custom_range
+import string
 
 print(custom_range(string.ascii_lowercase, "g"))
 print(custom_range(string.ascii_lowercase, "g", "p"))
 print(custom_range(string.ascii_lowercase, "p", "g", -2))
 
 
-def check_conditions_and_examples():
+def test_conditions_and_examples():
     """All given examples are checked"""
     assert custom_range(string.ascii_lowercase, "g") == ["a", "b", "c", "d", "e", "f"]
     assert custom_range(string.ascii_lowercase, "g", "p") == [

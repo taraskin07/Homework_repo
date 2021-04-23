@@ -27,14 +27,15 @@ def combinations(*args: List[Any]) -> List[List]:
         all_combinations.append(items)
     return all_combinations
 
-
-K = int(input("Enter a number of lists (K): "))
-for number_of_arrays in range(K):
-    x = [
-        int(i)
-        for i in input(
-            f"Enter a #{number_of_arrays+1} array values, separated with space: "
-        ).split()
-    ]
-    massive.append(x)
-print(combinations(massive))
+if __name__ == "__main__":
+    massive = []
+    K = int(input("Enter a number of lists (K): "))
+    for number_of_arrays in range(K):
+        x = [
+            int(i)
+            for i in input(
+                f"Enter a #{number_of_arrays+1} array values, separated with space: "
+            ).split()
+        ]
+        massive.append(x)
+    print(combinations(massive))

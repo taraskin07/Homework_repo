@@ -25,9 +25,6 @@ def func(a, b):
     return (a ** b) ** 2
 
 
-cache_value = dict()
-
-
 def cache(func: Callable) -> Callable:
     cache_value = dict()
 
@@ -42,15 +39,4 @@ def cache(func: Callable) -> Callable:
     return the_wrapper
 
 
-cache_func = cache(func)
 
-some = 100, 200
-
-val_1 = cache_func(*some)
-val_2 = cache_func(*some)
-
-print(val_1)
-print(val_2)
-print(val_1 is val_2)
-
-assert val_1 is val_2
