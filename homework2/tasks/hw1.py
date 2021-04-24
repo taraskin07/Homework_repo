@@ -90,7 +90,8 @@ def get_most_common_non_ascii_char(file_path: str) -> str:
 
 
 if __name__ == "__main__":
-    abs_path = os.getcwd() + "\\data.txt"
+    path = os.path.dirname(os.path.abspath(__file__))
+    abs_path = os.path.join(path, "data.txt")
     with codecs.open(abs_path, "r", encoding="unicode-escape") as fi:
         print(get_longest_diverse_words(fi))
     with codecs.open(abs_path, "r", encoding="unicode-escape") as fi:
