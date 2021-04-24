@@ -24,9 +24,3 @@ def find_maximum_and_minimum(file_name: str) -> Tuple[int, int]:
             massive.append(int(one_number))
     t = min(massive), max(massive)
     return t
-
-
-with open("task03.txt", "r") as fi:
-    print(find_maximum_and_minimum(fi))
-
-fi.close()
