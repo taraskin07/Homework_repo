@@ -8,11 +8,6 @@ We guarantee, that all A, B, C, D have same length of N where 0 ≤ N ≤ 1000.
 """
 from typing import List
 
-A = [1, -1, 2, -2]
-B = [-1, 1, -2, 2]
-C = [-3, 3, -5, 5]
-D = [-3, 3, -5, 5]
-
 
 def check_sum_of_four(a: List[int], b: List[int], c: List[int], d: List[int]) -> int:
     first_list_sum = []
@@ -35,4 +30,9 @@ def check_sum_of_four(a: List[int], b: List[int], c: List[int], d: List[int]) ->
     return count
 
 
-print(check_sum_of_four(A, B, C, D))
+if __name__ == "__main__":
+    A = [1, -1, 2, -2]
+    B = [-1, 1, -2, 2]
+    C = [-3, 3, -5, 5]
+    D = [-3, 3, -5, 5]
+    print(check_sum_of_four(A, B, C, D))
