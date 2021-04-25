@@ -1,9 +1,15 @@
 from homework3.tasks.task01 import *
 
 
+@new_cache(times=3)
+def func(a, b):
+    return (a ** b) ** 2
+
+
 def test_uncached_values():
     """Testing that only 3 values are cached"""
     some = 100, 200
+
     val_1 = func(*some)
     val_2 = func(*some)
     val_3 = func(*some)
@@ -14,6 +20,7 @@ def test_uncached_values():
 def test_cached_values():
     """Testing that 3 values are cached"""
     some = 100, 200
+
     val_1 = func(*some)
     val_2 = func(*some)
     val_3 = func(*some)
