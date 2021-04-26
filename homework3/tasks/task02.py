@@ -2,7 +2,7 @@ import hashlib
 import random
 import struct
 import time
-from multiprocessing import Pool
+from multiprocessing import Pool, Process, Queue
 from typing import List
 
 

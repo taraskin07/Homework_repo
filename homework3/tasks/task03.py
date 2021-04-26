@@ -21,12 +21,10 @@ def make_filter(**keywords):
     filter_funcs = []
     for key, value in keywords.items():
 
-        def keyword_filter_func():
-            variable = key, value
-            return variable
+        def keyword_filter_func(keywords):
+            return keywords[key] == value
 
-    filter_funcs.append(keyword_filter_func())
-
+        filter_funcs.append(keyword_filter_func)
     return Filter(filter_funcs)
 
 
@@ -40,12 +38,12 @@ if __name__ == "__main__":
         },
         {"is_dead": True, "kind": "parrot", "type": "bird", "name": "polly"},
     ]
-    # # example of usage:
-    # functions = (lambda a: a % 2 == 0, lambda a: a > 0, lambda a: isinstance(a, int))
-    # positive_even = Filter(functions)
-    # positive_case = positive_even.apply(range(100))
-    # print(positive_case)  # should return only even numbers from 0 to 99
-    # print([value for value in positive_case if value % 2 == 0])
+    # example of usage:
+    functions = (lambda a: a % 2 == 0, lambda a: a > 0, lambda a: isinstance(a, int))
+    positive_even = Filter(functions)
+    positive_case = positive_even.apply(range(100))
+    print(positive_case)  # should return only even numbers from 0 to 99
+    print([value for value in positive_case if value % 2 == 0])
     print(
         make_filter(name="polly", type="bird").apply(sample_data)
     )  # should return only second entry from the list
