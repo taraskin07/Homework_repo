@@ -8,36 +8,49 @@ def func(a, b):
     return (a ** b) ** 2
 
 
-# def test_uncached_values():
-#     """Testing that only 3 values are cached"""
-#     some = 100, 200
-#
-#     val_1 = func(*some)
-#     val_2 = func(*some)
-#     val_3 = func(*some)
-#     val_4 = func(*some)
-#     assert not val_3 is val_4
-#
-#
-# def test_cached_values():
-#     """Testing that 3 values are cached"""
-#     some = 100, 200
-#
-#     val_1 = func(*some)
-#     val_2 = func(*some)
-#     val_3 = func(*some)
-#     assert val_3 is val_2 and val_2 is val_1
-
-
-def test_calls_of_func():
-    func = Mock()
+def test_count_calls():
+    """Testing that only 3 values are cached within 4 calls, 5th call - new calculation"""
     some = 100, 200
-    val_1 = func(*some)
-    func.assert_called()
-    func.assert_called_once()
-    val_2 = func(*some)
-    func.assert_called()
-    val_3 = func(*some)
-    func.assert_called()
-    val_4 = func(*some)
-    func.assert_called()
+    mock_func = Mock()
+    mock_decor = Mock()
+    mock_decor.side_effect = new_cache(times=3)(mock_func)
+
+    mock_decor(*some)
+    calls_of_cache = mock_decor.call_count
+    calls_of_func = mock_func.call_count
+    assert calls_of_cache == 1
+    assert calls_of_func == 1
+    print(f"\n\nDecorator has been called {calls_of_cache} times")
+    print(f"Function (to calculate value) has been called {calls_of_func} times")
+
+    mock_decor(*some)
+    calls_of_cache = mock_decor.call_count
+    calls_of_func = mock_func.call_count
+    print(f"\nDecorator has been called {calls_of_cache} times")
+    print(f"Function (to calculate value) has been called {calls_of_func} times")
+    assert calls_of_cache == 2
+    assert calls_of_func == 1
+
+    mock_decor(*some)
+    calls_of_cache = mock_decor.call_count
+    calls_of_func = mock_func.call_count
+    print(f"\nDecorator has been called {calls_of_cache} times")
+    print(f"Function (to calculate value) has been called {calls_of_func} times")
+    assert calls_of_cache == 3
+    assert calls_of_func == 1
+
+    mock_decor(*some)
+    calls_of_cache = mock_decor.call_count
+    calls_of_func = mock_func.call_count
+    print(f"\nDecorator has been called {calls_of_cache} times")
+    print(f"Function (to calculate value) has been called {calls_of_func} times")
+    assert calls_of_cache == 4
+    assert calls_of_func == 1
+
+    mock_decor(*some)
+    calls_of_cache = mock_decor.call_count
+    calls_of_func = mock_func.call_count
+    print(f"\nDecorator has been called {calls_of_cache} times")
+    print(f"Function (to calculate value) has been called {calls_of_func} times")
+    assert calls_of_cache == 5
+    assert calls_of_func == 2

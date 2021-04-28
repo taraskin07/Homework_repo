@@ -29,12 +29,12 @@ def slow_calculate(value):
 
 
 if __name__ == "__main__":
-    values = [number for number in range(501)]
+    # values = [number for number in range(501)]
 
     @how_long_decorator
-    def calculation_of_several_processes(data: List):
-        pool = Pool(processes=60)
-        summa = sum(pool.map(slow_calculate, values))
+    def calculation_of_several_processes():
+        with Pool(4) as p:
+            summa = sum(p.map(slow_calculate, range(501)))
         return f"The sum is: {summa}"
 
-    print(calculation_of_several_processes(values))
+    print(calculation_of_several_processes())
