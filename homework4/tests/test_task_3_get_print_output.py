@@ -23,22 +23,17 @@ You will learn:
 """
 import sys
 
-
-def my_precious_logger(text: str):
-    if "error" in text:
-        print(text, file=sys.stderr)
-    else:
-        print(text)
+from homework4.tasks.task_3_get_print_output import my_precious_logger
 
 
 def test_my_precious_logger_error(capsys):
     my_precious_logger("error: file not found")
 
     captured = capsys.readouterr()
-    assert captured.err == "error: file not found\n"
+    assert captured.err == "error: file not found"
 
 
 def test_my_precious_logger_output(capsys):
     my_precious_logger("OK")
     captured = capsys.readouterr()
-    assert captured.out == "OK\n"
+    assert captured.out == "OK"

@@ -2,38 +2,52 @@ import hashlib
 import random
 import struct
 import time
-from multiprocessing import Pool, Process, Queue
-from typing import List
+from multiprocessing import Pool
+from threading import Thread
 
 
-def how_long_decorator(func):
-    """Decorator that calculates time!"""
-    import time
+class ThreadWithReturnValue(Thread):
+    def __init__(
+        self, group=None, target=None, name=None, args=(), kwargs={}, Verbose=None
+    ):
+        Thread.__init__(self, group, target, name, args, kwargs)
+        self._return = None
 
-    def wrapper(*args):
-        t = time.perf_counter()
-        res = func(*args)
-        print(
-            f"Estimated time for the {func.__name__} is no longer than {(time.perf_counter() - t):.2f} seconds!"
-        )
-        return res
+    def run(self):
+        # print(type(self._target))
+        if self._target is not None:
+            self._return = self._target(*self._args, **self._kwargs)
 
-    return wrapper
+    def join(self, *args):
+        Thread.join(self, *args)
+        return self._return
+
+
+def func(interval):
+    p = [ThreadWithReturnValue(target=slow_calculate, args=(i,)) for i in interval]
+    [th.start() for th in p]
+    result = [th.join() for th in p]
+    print(result)
+    return sum(result)
 
 
 def slow_calculate(value):
     """Some weird voodoo magic calculations"""
+    # print(f"i start {value}", res)
     time.sleep(random.randint(1, 3))
     data = hashlib.md5(str(value).encode()).digest()
     return sum(struct.unpack("<" + "B" * len(data), data))
 
 
+def func_with_timer():
+    t = time.perf_counter()
+    interval = [range(20 * i, (i + 1) * 20) for i in range(25)]
+    with Pool(4) as p:
+        print(sum(p.map(func, interval)))
+    seconds = time.perf_counter() - t
+    print(f"Estimated time is: {seconds:.2f} seconds")
+    return seconds
+
+
 if __name__ == "__main__":
-
-    @how_long_decorator
-    def calculation_of_several_processes():
-        with Pool(30) as p:
-            summa = sum(p.map(slow_calculate, range(501)))
-        return summa
-
-    print(calculation_of_several_processes())
+    func_with_timer()
