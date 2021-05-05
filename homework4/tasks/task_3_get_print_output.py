@@ -26,12 +26,13 @@ import sys
 
 def my_precious_logger(text: str):
     if text.startswith("error"):
-        print(text, file=sys.stderr)
+        text = sys.stderr.write(text)
     else:
-        print(text)
+        text = sys.stdout.write(text)
+    return text
 
 
 if __name__ == "__main__":
     my_precious_logger("error: file not found")
-
+    print("\t")
     my_precious_logger("OK")
