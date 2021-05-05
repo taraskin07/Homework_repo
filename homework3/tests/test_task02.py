@@ -1,4 +1,4 @@
-from homework3.tasks.task02_mod import func_with_timer
+from homework3.tasks.task02 import func_with_timer
 
 
 def test_timer_func():
