@@ -39,15 +39,13 @@ def slow_calculate(value):
     return sum(struct.unpack("<" + "B" * len(data), data))
 
 
-def func_with_timer():
-    t = time.perf_counter()
+def func_with_pool():
     interval = [range(20 * i, (i + 1) * 20) for i in range(25)]
     with Pool(4) as p:
-        print(sum(p.map(func, interval)))
-    seconds = time.perf_counter() - t
-    print(f"Estimated time is: {seconds:.2f} seconds")
-    return seconds
+        summa = sum(p.map(func, interval))
+        print(summa)
+    return summa
 
 
 if __name__ == "__main__":
-    func_with_timer()
+    func_with_pool()
