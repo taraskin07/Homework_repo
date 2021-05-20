@@ -1,5 +1,5 @@
-from homework5.tasks.save_original_info import *
-
+from homework5.tasks.save_original_info import print_result, custom_sum
+import functools
 
 def custom_sum(*args):
     """This function can sum any objects which have __add__"""

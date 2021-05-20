@@ -1,4 +1,5 @@
-from homework5.tasks.oop_1 import *
+from homework5.tasks.oop_1 import Student, Teacher
+import datetime
 
 
 def test_teacher():

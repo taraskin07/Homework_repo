@@ -25,7 +25,7 @@ Homework)
 
 3. Teacher
 Атрибуты:
-     last_name
+     last_name
      first_name
 Методы:
     create_homework - текст задания и количество дней на это задание,
@@ -38,74 +38,97 @@ PEP8 соблюдать строго.
 давать логичные подходящие имена.
 """
 import datetime
+import logging
 
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 class Homework:
     """
     Класс Homework принимает на вход 2 атрибута: текст задания и количество дней на это задание.
+
+    :param text: текст задания
+    :param deadline: количество дней на задание
     """
 
     def __init__(self, text, deadline):
         """
-        Текст задания и количество дней на это задание
+        Конструктор
         """
         self.text = text
-        # print(self.text)
+        logger.debug(f'Task text: {self.text}')
         time_now = datetime.datetime.now()
         self.created = time_now
         self.deadline = datetime.timedelta(days=deadline)
 
     def is_active(self):
+        """
+        Проверяет, не прошел ли дедлайн.
+
+        :param isactive: разница между текущим временем и временем получения задания
+
+        :return: True -время ещё есть, False -дедлайн прошел
+        :type: bool
+        """
         isactive = datetime.datetime.now() - self.created
         return isactive < self.deadline
 
 
 class Student:
     """
-    Атрибуты:
-    last_name
-    first_name
-    Методы:
-    do_homework - принимает объект Homework и возвращает его же,
-    если задание уже просрочено, то печатет 'You are late' и возвращает None.
+    Принимает на вход имя и фамилию студента.
+
+    :param last_name: фамилия студента
+    :param first_name: имя студента
     """
 
     def __init__(self, last_name, first_name):
-        """Текст задания и количество дней на это задание"""
+        """Конструктор"""
         self.last_name = last_name
-        # print(self.last_name)
+        logger.debug(f'Last name: {self.last_name}')
         self.first_name = first_name
-        # print(self.first_name)
+        logger.debug(f'First name: {self.first_name}')
 
-    def do_homework(self, Homework):
+    def do_homework(self, homework):
         """
-        Принимает объект Homework и возвращает его же, если задание уже просрочено, то печатет 'You are late' и возвращает None.
+        Принимает объект homework и возвращает его же, если задание уже просрочено, то печатет 'You are late' и возвращает None.
+
+        :param homework: Принимает объект homework :class:`Homework`
+
+        :return: возвращает объект :class:`Homework`, есди задание просрочено, то :class:`NoneType`
+        :type: объект :class:`Homework`  или объект :class:`NoneType`
         """
-        self.Homework = Homework
-        if Homework.is_active():
-            return Homework
+        self.homework = homework
+        if homework.is_active():
+            return homework
         else:
             print("You are late")
 
 
 class Teacher:
     """
-    Атрибуты:
-    last_name
-     first_name
-    Методы:
-    create_homework - текст задания и количество дней на это задание,
-    возвращает экземпляр Homework
-    Обратите внимание, что для работы этого метода не требуется сам объект.
+    Принимает на вход имя и фамилию учителя.
+
+    :param last_name: фамилия учителя
+    :param first_name: имя учителя
     """
 
     def __init__(self, last_name, first_name):
+        """Конструктор"""
         self.last_name = last_name
-        # print(self.last_name)
+        logger.debug(print(f'Last name: {self.last_name}'))
         self.first_name = first_name
-        # print(self.first_name)
+        logger.debug(print(f'First name: {self.first_name}'))
 
     def create_homework(self, text, days_amount):
+        """Принимает текст задания и количество дней на это задание,
+    возвращает экземпляр Homework
+
+        :param text: текст задания
+        :param days_amount: количество дней на это задание
+
+        :return: экземпляр класса :class:`Homework`
+        """
         self.text = text
         self.days_amount = days_amount
         return Homework(self.text, self.days_amount)
@@ -114,20 +137,30 @@ class Teacher:
 if __name__ == "__main__":
     teacher = Teacher("Shadrin", "Daniil")
     student = Student("Petrov", "Roman")
-    print(teacher.first_name)  # Daniil
-    print(student.last_name + "\n")  # Petrov
+    print(teacher.first_name)
+    logger.debug('# Daniil')
+    print(student.last_name)
+    logger.debug('# Petrov')
+    print("\n")
 
     expired_homework = teacher.create_homework("Learn functions", 0)
     print(
         f"Just like in 'Example': {expired_homework.created}"
-    )  # Example: 2019-05-26 16:44:30.688762
-    print(expired_homework.deadline)  # 0:00:00
-    print(expired_homework.text + "\n")  # 'Learn functions'
+    )
+    logger.debug(f'# Example: 2019-05-26 16:44:30.688762')
+    print(expired_homework.deadline)
+    logger.debug('# 0:00:00')
+    print(expired_homework.text)
+    logger.debug('# Learn functions')
+    print("\n")
 
-    # create function from method and use it
+    logger.debug('# create function from method and use it')
     create_homework_too = teacher.create_homework
     oop_homework = create_homework_too("create 2 simple classes", 5)
-    print(str(oop_homework.deadline) + "\n")  # 5 days, 0:00:00
+    print(str(oop_homework.deadline))
+    logger.debug('# 5 days, 0:00:00')
+    print("\n")
 
     student.do_homework(oop_homework)
-    student.do_homework(expired_homework)  # You are late
+    student.do_homework(expired_homework)
+    logger.debug('# You are late')
