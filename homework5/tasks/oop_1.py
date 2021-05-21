@@ -56,7 +56,6 @@ class Homework:
         """
         Конструктор
         """
-
         self.text = text
         logger.debug(f"Task text: {self.text}")
         time_now = datetime.datetime.now()
@@ -70,9 +69,8 @@ class Homework:
         :param isactive: разница между текущим временем и временем получения задания
 
         :return: True -время ещё есть, False -дедлайн прошел
-        :type: bool
+        :rtype: bool
         """
-
         isactive = datetime.datetime.now() - self.created
         return isactive < self.deadline
 
@@ -99,7 +97,7 @@ class Student:
         :param homework: Принимает объект homework :class:`Homework`
 
         :return: возвращает объект :class:`Homework`, есди задание просрочено, то :class:`NoneType`
-        :type: объект :class:`Homework`  или объект :class:`NoneType`
+        :rtype: объект :class:`Homework`  или объект :class:`NoneType`
         """
         self.homework = homework
         if homework.is_active():

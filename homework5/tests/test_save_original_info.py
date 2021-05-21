@@ -5,7 +5,6 @@ from homework5.tasks.save_original_info import custom_sum, print_result
 
 def custom_sum(*args):
     """This function can sum any objects which have __add__"""
-
     return functools.reduce(lambda x, y: x + y, args)
 
 
@@ -15,7 +14,6 @@ def test_custom_sum():
 
 
 def test_doc_and_name():
-
     global custom_sum
     custom_sum([1, 2, 3], [4, 5])
     doc1 = custom_sum.__doc__

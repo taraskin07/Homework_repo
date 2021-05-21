@@ -11,7 +11,7 @@ print_result изменять нельзя, за исключением доба
 После применения там должна быть исходная функция
 
 Ожидаемый результат:
-print(custom_sum.__doc__)  # 'This function can sum any objects which have __add___'
+print(custom_sum.__doc__)  # 'This function can sum any objects which have __add__'
 print(custom_sum.__name__)  # 'custom_sum'
 print(custom_sum.__original_func)  # <function custom_sum at <some_id>>
 """
@@ -50,7 +50,6 @@ def print_result(func):
 @print_result
 def custom_sum(*args):
     """This function can sum any objects which have __add__"""
-
     return functools.reduce(lambda x, y: x + y, args)
 
 
