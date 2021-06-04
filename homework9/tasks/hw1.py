@@ -14,6 +14,7 @@ file2.txt:
 # >>> list(merge_sorted_files(["file1.txt", "file2.txt"]))
 [1, 2, 3, 4, 5, 6]
 """
+
 from pathlib import Path
 from typing import Iterator, List, Union
 
@@ -37,6 +38,8 @@ def merge_sorted_files(file_list: List[Union[Path, str]]) -> Iterator:
 
 
 if __name__ == "__main__":
-    print(list(merge_sorted_files(["file1.txt", "file2.txt"])))
+    path_to_file1 = Path(__file__).parents[1].joinpath("tests").joinpath("file1.txt")
+    path_to_file2 = Path(__file__).parents[1].joinpath("tests").joinpath("file2.txt")
+    print(list(merge_sorted_files([path_to_file1, path_to_file2])))
     nl1 = [[1, 3, 76], [467], [3, 3, 3]]
     print(sorted_lists(nl1))
