@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 import requests_mock
+
 from homework4.tasks.task_2_mock_input import *
 
 
