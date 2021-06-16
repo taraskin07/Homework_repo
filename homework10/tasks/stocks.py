@@ -1,10 +1,10 @@
-from bs4 import BeautifulSoup
-from operator import itemgetter
-import json
 import asyncio
-import aiohttp
+import json
+from decimal import ROUND_HALF_UP, Decimal
+from operator import itemgetter
 
-from decimal import Decimal, ROUND_HALF_UP
+import aiohttp
+from bs4 import BeautifulSoup
 
 
 class Round(Decimal):
@@ -12,7 +12,6 @@ class Round(Decimal):
 
     def __init__(self, value):
         self = float(self.quantize(Decimal("1.00"), ROUND_HALF_UP))
-
 
 
 async def get_response(url):
@@ -65,23 +64,42 @@ async def content_from_company_page(html, exchange_rate):
     company_info = []
     soup = BeautifulSoup(html, "lxml")
 
-    code = soup.find("span", class_="price-section__category").find("span").text.lstrip(", ")
+    code = (
+        soup.find("span", class_="price-section__category")
+        .find("span")
+        .text.lstrip(", ")
+    )
     name = soup.find("span", class_="price-section__label").text.strip()
-    price = Round(soup.find("span", class_="price-section__current-value").text.replace(",", ""))
+    price = Round(
+        soup.find("span", class_="price-section__current-value").text.replace(",", "")
+    )
     price_in_rub = price * exchange_rate
-    price_to_earnings = Round(soup.find(text="P/E Ratio", class_="snapshot__header").previous_sibling.strip())
-    week_high_52 = Decimal(soup.find(text="52 Week High", class_="snapshot__header").previous_sibling.strip())
-    week_low_52 = Decimal(soup.find(text="52 Week Low", class_="snapshot__header").previous_sibling.strip())
+    price_to_earnings = Round(
+        soup.find(text="P/E Ratio", class_="snapshot__header").previous_sibling.strip()
+    )
+    week_high_52 = Decimal(
+        soup.find(
+            text="52 Week High", class_="snapshot__header"
+        ).previous_sibling.strip()
+    )
+    week_low_52 = Decimal(
+        soup.find(
+            text="52 Week Low", class_="snapshot__header"
+        ).previous_sibling.strip()
+    )
     max_potential_profit = float((week_high_52 - week_low_52) / week_low_52) * 100
     company_info.append(
-        {'code': code,
-         'name': name,
-         'price, RUB': Round(price_in_rub), "growth, %": None, 'P/E, r.u.': price_to_earnings,
-         "52 Week High, USD": Round(week_high_52), "52 Week Low, USD": Round(week_low_52),
-         'Max potential profit per year, %': f"{Round(max_potential_profit)}"
-         })
-
-
+        {
+            "code": code,
+            "name": name,
+            "price, RUB": Round(price_in_rub),
+            "growth, %": None,
+            "P/E, r.u.": price_to_earnings,
+            "52 Week High, USD": Round(week_high_52),
+            "52 Week Low, USD": Round(week_low_52),
+            "Max potential profit per year, %": f"{Round(max_potential_profit)}",
+        }
+    )
 
     return company_info
 
@@ -98,24 +116,25 @@ async def main(url_list):
     """Function to get html pages asynchronously"""
     exchange_rate = asyncio.create_task(get_exchange_rate())
 
-
     pages = [asyncio.create_task(get_response(url)) for url in url_list]
     await asyncio.gather(*pages)
-
 
     link_list = [asyncio.create_task(get_company_link(page)) for page in pages]
     growth_list = [asyncio.create_task(get_company_growth(page)) for page in pages]
     await asyncio.gather(*link_list)
     await asyncio.gather(*growth_list)
 
-
-    collect_htmls = [asyncio.create_task(get_response(url)) for url in [i["link"] for i in link_list]]
+    collect_htmls = [
+        asyncio.create_task(get_response(url)) for url in [i["link"] for i in link_list]
+    ]
     await asyncio.gather(*collect_htmls)
 
-    companies_info = [asyncio.create_task(content_from_company_page(html, exchange_rate)) for html in collect_htmls]
+    companies_info = [
+        asyncio.create_task(content_from_company_page(html, exchange_rate))
+        for html in collect_htmls
+    ]
 
     return unite_growth_and_other_info(growth_list, companies_info)
-
 
 
 def sorting_dicts(data, condition):
@@ -136,11 +155,20 @@ def sorting_dicts(data, condition):
         )
     return top10
 
+
 if __name__ == "__main__":
-    url_list = ["https://markets.businessinsider.com/index/components/s&p_500?p=" + str(i) for i in range(1, 11)]
+    url_list = [
+        "https://markets.businessinsider.com/index/components/s&p_500?p=" + str(i)
+        for i in range(1, 11)
+    ]
     exchange_rate = get_exchange_rate()
     data = asyncio.run(main(url_list))
-    for condition in ["price, RUB", "P/E, r.u.", "growth, %", "Max potential profit per year, %"]:
+    for condition in [
+        "price, RUB",
+        "P/E, r.u.",
+        "growth, %",
+        "Max potential profit per year, %",
+    ]:
         with open(condition + ".json", "w+") as file:
             json.dump(sorting_dicts(data, condition), file)
 
