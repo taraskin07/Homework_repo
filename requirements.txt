@@ -3,3 +3,6 @@ isort
 pytest
 pytest-sugar
 requests_mock
+asyncio
+aiohttp
+beautifulsoup4
