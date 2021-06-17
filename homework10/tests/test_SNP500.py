@@ -1,14 +1,14 @@
 import asyncio
 
-from homework10.tasks.SNP500 import (
-    Round,
-    content_from_company_page,
-    get_company_growth,
-    get_company_link,
-    get_response,
-    sorting_dicts,
-    unite_growth_and_other_info,
-)
+import homework10.tasks.SNP500 as snp
+
+Round = snp.Round
+content_from_company_page = snp.content_from_company_page
+get_company_growth = snp.get_company_growth
+get_company_link = snp.get_company_link
+get_response = snp.get_response
+sorting_dicts = snp.sorting_dicts
+unite_growth_and_other_info = snp.unite_growth_and_other_info
 
 
 def test_Round():
