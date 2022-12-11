@@ -14,7 +14,7 @@ class TestHTTPRequest(TestCase):
 
     def test_connection_to_URL_error(self):
         with self.assertRaises(ValueError):
-            connection_to_URL("http://123564353.com")
+            connection_to_URL("http://123564353$$$$$$$.com")
 
     def test_count_dots_on_i(self):
         with requests_mock.Mocker() as mock_request:

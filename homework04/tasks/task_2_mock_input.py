@@ -52,3 +52,5 @@ if __name__ == "__main__":
     print(count_dots_on_i("https://example.com/"))
 
     print(establishing_connection("https://example.com/"))
+
+

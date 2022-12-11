@@ -1,6 +1,6 @@
 import os
 
-from homework10.tasks.hw1 import gen_sorting, merge_sorted_files
+from homework09.tasks.hw1 import gen_sorting, merge_sorted_files
 
 
 def test_nested_lists():

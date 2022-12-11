@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from homework10.tasks.hw3 import custom_tokenizer, universal_file_counter
+from homework09.tasks.hw3 import custom_tokenizer, universal_file_counter
 
 path_to_files = Path(__file__).parents[1].joinpath("tests")
 

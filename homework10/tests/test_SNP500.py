@@ -33,7 +33,7 @@ def test_get_company_growth():
         get_response("https://markets.businessinsider.com/index/components/s&p_500?p=1")
     )
     list_of_growth = asyncio.run(get_company_growth(html))
-    assert list_of_growth[0]["growth, %"] == 27.68
+    assert isinstance(list_of_growth[0]["growth, %"], float)
 
 
 def test_content_from_company_page():

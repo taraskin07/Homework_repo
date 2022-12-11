@@ -1,5 +1,5 @@
 import pytest
-from homework10.tasks.hw2 import Suppressor_cl, suppressor
+from homework09.tasks.hw2 import Suppressor_cl, suppressor
 
 
 def test_Suppressor_cl():
