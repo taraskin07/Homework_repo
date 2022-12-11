@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 import requests_mock
-from homework4.tasks.task_2_mock_input import *
+from homework04.tasks.task_2_mock_input import *
 
 
 class TestHTTPRequest(TestCase):

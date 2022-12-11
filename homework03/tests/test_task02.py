@@ -1,4 +1,4 @@
-from homework3.tasks.task02 import *
+from homework03.tasks.task02 import *
 
 
 def test_timer_func():

@@ -1,6 +1,6 @@
 import datetime
 
-from homework5.tasks.oop_1 import Student, Teacher
+from homework05.tasks.oop_1 import Student, Teacher
 
 
 def test_teacher():

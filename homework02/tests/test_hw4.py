@@ -1,4 +1,4 @@
-from homework2.tasks.hw4 import *
+from homework02.tasks.hw4 import *
 
 
 def test_if_value_is_cached():

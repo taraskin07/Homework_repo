@@ -1,6 +1,6 @@
 import os
 
-from homework8.tasks.task2_context_manager import TableData
+from homework08.tasks.task2_context_manager import TableData
 
 path = os.path.dirname(os.path.abspath(__file__))
 abs_path = os.path.join(path, "example.sqlite")

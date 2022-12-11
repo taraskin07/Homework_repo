@@ -1,4 +1,4 @@
-from homework7.tasks.hw2 import backspace_compare
+from homework07.tasks.hw2 import backspace_compare
 
 
 def test_input_check_pos():

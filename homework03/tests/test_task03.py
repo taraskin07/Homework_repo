@@ -1,4 +1,4 @@
-from homework3.tasks.task03 import *
+from homework03.tasks.task03 import *
 
 
 def test_positive_even():

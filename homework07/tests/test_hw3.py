@@ -1,4 +1,4 @@
-from homework7.tasks.hw3 import tic_tac_toe_checker
+from homework07.tasks.hw3 import tic_tac_toe_checker
 
 
 def test_unfinished():

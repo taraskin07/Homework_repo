@@ -1,7 +1,7 @@
 import codecs
 import os
 
-from homework2.tasks.hw1 import *
+from homework02.tasks.hw1 import *
 
 
 def test_get_longest_diverse_words():

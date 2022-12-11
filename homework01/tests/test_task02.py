@@ -1,4 +1,4 @@
-from homework1.tasks.task02 import check_fibonacci
+from homework01.tasks.task02 import check_fibonacci
 
 
 def test_that_fibonacci_sequence_is_fibonacci():

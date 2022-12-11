@@ -23,7 +23,7 @@ You will learn:
 """
 import sys
 
-from homework4.tasks.task_3_get_print_output import my_precious_logger
+from homework04.tasks.task_3_get_print_output import my_precious_logger
 
 
 def test_my_precious_logger_error(capsys):

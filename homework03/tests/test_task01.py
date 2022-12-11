@@ -1,6 +1,6 @@
 from unittest.mock import Mock
 
-from homework3.tasks.task01 import *
+from homework03.tasks.task01 import *
 
 
 @new_cache(times=3)

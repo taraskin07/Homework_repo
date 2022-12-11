@@ -1,5 +1,5 @@
 import pytest
-from homework6.tasks.oop_2 import HomeworkResult, Student, Teacher
+from homework06.tasks.oop_2 import HomeworkResult, Student, Teacher
 
 
 def test_dictionary_teacher():

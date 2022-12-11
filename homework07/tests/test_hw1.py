@@ -1,4 +1,4 @@
-from homework7.tasks.hw1 import find_occurrences
+from homework07.tasks.hw1 import find_occurrences
 
 example_tree = {
     "first": ["RED", "BLUE"],

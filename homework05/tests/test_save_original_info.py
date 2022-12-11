@@ -1,6 +1,6 @@
 import functools
 
-from homework5.tasks.save_original_info import custom_sum, print_result
+from homework05.tasks.save_original_info import custom_sum, print_result
 
 
 def custom_sum(*args):

@@ -29,7 +29,7 @@ You will learn:
 import os
 
 import pytest
-from homework4.tasks.task_1_read_file import read_magic_number
+from homework04.tasks.task_1_read_file import read_magic_number
 
 
 def test_create_file(tmpdir):

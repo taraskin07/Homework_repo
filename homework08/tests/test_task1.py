@@ -1,7 +1,7 @@
 import os
 
 import pytest
-from homework8.tasks.task1 import KeyValueStorage
+from homework08.tasks.task1 import KeyValueStorage
 
 path = os.path.dirname(os.path.abspath(__file__))
 abs_path = os.path.join(path, "test_task1.txt")

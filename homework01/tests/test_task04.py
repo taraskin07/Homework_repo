@@ -1,4 +1,4 @@
-from homework1.tasks.task04 import check_sum_of_four
+from homework01.tasks.task04 import check_sum_of_four
 
 
 def test_that_sum_of_four_function():

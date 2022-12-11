@@ -1,4 +1,4 @@
-from homework6.tasks.counter import instances_counter
+from homework06.tasks.counter import instances_counter
 
 
 @instances_counter

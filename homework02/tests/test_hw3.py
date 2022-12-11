@@ -1,4 +1,4 @@
-from homework2.tasks.hw3 import combinations
+from homework02.tasks.hw3 import combinations
 
 
 def test_assert_combinations():

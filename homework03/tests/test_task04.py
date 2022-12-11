@@ -16,7 +16,7 @@ Write a function that detects if a number is Armstrong number in functionaly sty
 
 ### Example function signature and call
 """
-from homework3.tasks.task04 import is_armstrong
+from homework03.tasks.task04 import is_armstrong
 
 
 def test_whether_is_armstrong():

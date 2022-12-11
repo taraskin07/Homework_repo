@@ -1,6 +1,6 @@
 import string
 
-from homework2.tasks.hw5 import custom_range
+from homework02.tasks.hw5 import custom_range
 
 
 def test_conditions_and_examples():
