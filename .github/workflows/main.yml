@@ -4,7 +4,7 @@ jobs:
   code_quality:
     name: Checks with black and isort
     runs-on: ubuntu-latest
-    container: python:3.9
+    container: python:3.8
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
