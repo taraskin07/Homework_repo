@@ -5,7 +5,7 @@ from homework3.tasks.task01 import *
 
 @new_cache(times=3)
 def func(a, b):
-    return (a ** b) ** 2
+    return (a**b) ** 2
 
 
 def test_count_calls():

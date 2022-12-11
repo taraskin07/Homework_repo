@@ -1,7 +1,6 @@
 import os
 
 import pytest
-
 from homework8.tasks.task1 import KeyValueStorage
 
 path = os.path.dirname(os.path.abspath(__file__))

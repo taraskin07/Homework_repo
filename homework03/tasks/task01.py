@@ -22,7 +22,7 @@ from typing import Callable
 
 
 def func(a, b):
-    return (a ** b) ** 2
+    return (a**b) ** 2
 
 
 def new_cache(
@@ -57,7 +57,7 @@ def new_cache(
 
 @new_cache(times=3)
 def func(a, b):
-    return (a ** b) ** 2
+    return (a**b) ** 2
 
 
 if __name__ == "__main__":

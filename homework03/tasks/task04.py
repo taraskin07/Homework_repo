@@ -22,5 +22,5 @@ def is_armstrong(number: int) -> bool:
     string_of_integers = str(number)
     each_numeral = [int(numeral) for numeral in string_of_integers]
     length = len(string_of_integers)
-    armstrong = sum(map(lambda x: x ** length, each_numeral))
+    armstrong = sum(map(lambda x: x**length, each_numeral))
     return armstrong == number
