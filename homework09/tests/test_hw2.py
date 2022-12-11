@@ -1,4 +1,5 @@
 import pytest
+
 from homework09.tasks.hw2 import Suppressor_cl, suppressor
 
 

@@ -1,4 +1,5 @@
 import pytest
+
 from homework06.tasks.oop_2 import HomeworkResult, Student, Teacher
 
 
